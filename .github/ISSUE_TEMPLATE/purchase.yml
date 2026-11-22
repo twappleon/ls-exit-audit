@@ -1,0 +1,45 @@
+name: Purchase LS Exit Audit v0.3.0
+description: Request the US$29 one-time package and private delivery
+title: "Purchase request: LS Exit Audit v0.3.0"
+labels: ["purchase-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your interest. This request is public. Do not post credentials, source code, customer data, private keys, seed phrases, or other sensitive information.
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Primary environment
+      options:
+        - macOS
+        - Linux
+        - Windows
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Intended scan scope
+      options:
+        - Local repository only
+        - Local repository and owner-authorized public URLs
+    validations:
+      required: true
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Non-sensitive use case
+      description: Briefly describe the repository type and migration stage without sharing private details.
+    validations:
+      required: true
+  - type: checkboxes
+    id: acknowledgment
+    attributes:
+      label: Safety acknowledgment
+      options:
+        - label: I will only scan repositories and URLs I own or am authorized to inspect.
+          required: true
+        - label: I understand payment asset and network must be confirmed before any payment destination is provided.
+          required: true
