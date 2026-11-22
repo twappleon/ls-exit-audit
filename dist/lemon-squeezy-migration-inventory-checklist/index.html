@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lemon Squeezy migration inventory checklist — free template</title>
+  <meta name="description" content="A standalone checklist for finding Lemon Squeezy dependencies across code, checkout, webhooks, licensing, customer communications, and operations before migrating providers.">
+  <meta property="og:title" content="Lemon Squeezy migration inventory checklist">
+  <meta property="og:description" content="A free, standalone inventory template for teams planning a Lemon Squeezy migration.">
+  <meta property="og:type" content="article">
+  <style>
+    :root { color-scheme: dark; --bg:#0b0d0f; --panel:#12161a; --ink:#f0f3f1; --muted:#a6afaa; --line:#2b3237; --accent:#c7f65b; --warn:#f2c66d; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    a { color:var(--accent); }
+    header, main, footer { width:min(860px,calc(100% - 32px)); margin:auto; }
+    header { padding:64px 0 34px; border-bottom:1px solid var(--line); }
+    main { padding:34px 0 72px; }
+    footer { padding:26px 0 44px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
+    .eyebrow { color:var(--accent); font:700 12px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.09em; text-transform:uppercase; }
+    h1 { margin:12px 0 18px; font-size:clamp(2.5rem,7vw,4.8rem); line-height:.98; letter-spacing:-.055em; }
+    h2 { margin:54px 0 14px; font-size:1.8rem; letter-spacing:-.025em; }
+    h3 { margin:26px 0 8px; }
+    p, li { color:var(--muted); }
+    .lead { max-width:760px; font-size:1.18rem; }
+    .notice { margin:28px 0; padding:18px 20px; border:1px solid var(--line); background:var(--panel); }
+    .notice strong { color:var(--ink); }
+    .warning { border-left:4px solid var(--warn); }
+    .checklist { list-style:none; padding:0; }
+    .checklist li { position:relative; padding:10px 0 10px 34px; border-bottom:1px solid var(--line); }
+    .checklist li::before { content:"□"; position:absolute; left:3px; color:var(--accent); font:20px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .template { overflow:auto; padding:18px; border:1px solid var(--line); background:#080a0c; color:#dce2df; font:13px/1.65 ui-monospace,SFMono-Regular,Menlo,monospace; white-space:pre; }
+    .cta { margin-top:52px; padding:26px; border:1px solid var(--line); background:var(--panel); }
+    .button { display:inline-block; margin-top:8px; padding:12px 16px; border-radius:5px; background:var(--accent); color:#101700; font-weight:800; text-decoration:none; }
+    .meta { color:var(--muted); font-size:14px; }
+    @media print { body { color-scheme:light; background:white; color:black; } p,li,.meta { color:#333; } .cta,footer { display:none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="eyebrow">Free migration planning resource</div>
+    <h1>Lemon Squeezy migration inventory checklist</h1>
+    <p class="lead">Before choosing or configuring a replacement payment provider, map every place where Lemon Squeezy touches your product. This standalone checklist works without buying a tool.</p>
+    <p class="meta">Published November 22, 2026 · by the maker of LS Exit Audit</p>
+  </header>
+
+  <main>
+    <div class="notice warning"><strong>Scope:</strong> inventory only. Do not move customer records, subscriptions, licenses, payments, or credentials during this step. Scan only repositories and URLs you own or are authorized to assess.</div>
+
+    <h2>1. Create one inventory record per dependency</h2>
+    <p>Use these fields so each finding has an owner and a verifiable exit condition:</p>
+    <div class="template">Location | Dependency | Current behavior | Migration owner | Replacement | Verification step | Status
+---------|------------|------------------|-----------------|-------------|-------------------|-------
+app/api/webhook.ts | subscription webhook | updates access state | Backend | TBD | replay sanitized fixture | Open</div>
+
+    <h2>2. Repository and configuration</h2>
+    <ul class="checklist">
+      <li>SDK imports, package dependencies, API clients, and generated types</li>
+      <li>Environment-variable names, secret references, and deployment configuration — record names, never secret values</li>
+      <li>Store, product, variant, subscription, order, and customer identifiers</li>
+      <li>Checkout URL builders, pricing buttons, overlays, and return URLs</li>
+      <li>Customer-portal links and account-management actions</li>
+      <li>Webhook endpoints, signature verification, event names, retries, and idempotency logic</li>
+      <li>Subscription status mapping, cancellation, pause, refund, grace-period, and failed-payment behavior</li>
+      <li>License activation, validation, deactivation, device limits, and offline fallback</li>
+      <li>Tests, fixtures, mocks, seed data, CI variables, deployment scripts, and monitoring queries</li>
+      <li>Comments, runbooks, onboarding docs, privacy text, terms, agent instructions, and support macros</li>
+    </ul>
+
+    <h2>3. Customer-facing web surface</h2>
+    <ul class="checklist">
+      <li>Pricing pages, plan comparison tables, checkout buttons, and embedded storefronts</li>
+      <li>Help center, billing FAQ, cancellation instructions, and refund policy</li>
+      <li>Login, account, download, license, and purchase-confirmation pages</li>
+      <li>Email templates for receipts, renewals, failed payments, cancellations, and license delivery</li>
+      <li>Affiliate links, campaign pages, partner pages, and public documentation</li>
+      <li>Terms, privacy policy, data-processing disclosures, invoices, and tax wording</li>
+      <li>Browser extensions, desktop-app update flows, plugins, mobile apps, and external installers</li>
+    </ul>
+
+    <h2>4. Operational gaps to assign explicitly</h2>
+    <ul class="checklist">
+      <li>Existing subscriptions: migration, parallel operation, customer reauthorization, or controlled wind-down</li>
+      <li>PayPal and alternative-payment customers that the replacement may not support</li>
+      <li>License keys, file delivery, download entitlements, storefront pages, and affiliate management</li>
+      <li>Webhook ordering, duplicate delivery, missing events, and access removal after expiry</li>
+      <li>Refunds, disputes, invoices, taxes, historical exports, and support access after cutover</li>
+      <li>Unsupported seller countries, currencies, payout rails, or business types</li>
+      <li>Rollback owner, freeze window, monitoring dashboard, and customer escalation route</li>
+    </ul>
+
+    <h2>5. Verification before cutover</h2>
+    <ul class="checklist">
+      <li>Search again for old domains, SDK names, environment variables, IDs, and brand text</li>
+      <li>Test new checkout, webhook, portal, refund, cancellation, renewal, and failed-payment paths</li>
+      <li>Test access removal and license behavior, not only successful purchase</li>
+      <li>Review every public page and customer email on desktop and mobile</li>
+      <li>Keep a documented rollback path until production evidence is stable</li>
+      <li>Archive the final inventory with owners, evidence links, and unresolved exceptions</li>
+    </ul>
+
+    <h2>Official planning references</h2>
+    <p>Confirm deadlines and provider-specific limitations directly in Lemon Squeezy's current <a href="https://docs.lemonsqueezy.com/migration">migration guide</a>, <a href="https://docs.lemonsqueezy.com/migration/faq">migration FAQ</a>, and <a href="https://docs.lemonsqueezy.com/migration/comparison">comparison guidance</a>. Policies can change; use the official pages as the source of truth.</p>
+
+    <section class="cta">
+      <h2 style="margin-top:0">Want to automate the first pass?</h2>
+      <p>I built <strong>LS Exit Audit v0.3.0</strong>, a Node.js 20 CLI that scans a repository and owner-authorized URL list, then exports Markdown, HTML, JSON, and SARIF. I am the maker; this is a disclosed product mention, not an independent review. It costs <strong>US$29</strong>.</p>
+      <a class="button" href="/?utm_source=github-pages&amp;utm_medium=content&amp;utm_campaign=ls-migration-checklist-2026-11-22">See LS Exit Audit and the real sample report</a>
+    </section>
+  </main>
+
+  <footer>
+    <a href="/">LS Exit Audit</a> · This checklist is free to use internally. No upvote, signup, or purchase is required.
+  </footer>
+</body>
+</html>

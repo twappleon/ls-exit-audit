@@ -6,6 +6,7 @@ const out = resolve(root, 'dist');
 
 await rm(out, { recursive: true, force: true });
 await mkdir(resolve(out, 'assets'), { recursive: true });
+await mkdir(resolve(out, 'lemon-squeezy-migration-inventory-checklist'), { recursive: true });
 
 for (const file of ['index.html', 'TERMS.md', '.nojekyll']) {
   await cp(resolve(root, file), resolve(out, file));
@@ -13,6 +14,10 @@ for (const file of ['index.html', 'TERMS.md', '.nojekyll']) {
 for (const file of ['demo.png', 'demo-report.html']) {
   await cp(resolve(root, 'assets', file), resolve(out, 'assets', file));
 }
+await cp(
+  resolve(root, 'lemon-squeezy-migration-inventory-checklist', 'index.html'),
+  resolve(out, 'lemon-squeezy-migration-inventory-checklist', 'index.html')
+);
 
 await writeFile(resolve(out, '404.html'), await (await import('node:fs/promises')).readFile(resolve(root, 'index.html')));
 console.log('Built static site in dist/');

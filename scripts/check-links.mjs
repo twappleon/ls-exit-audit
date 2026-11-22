@@ -2,7 +2,11 @@ import { access, readFile, readdir, stat } from 'node:fs/promises';
 import { dirname, extname, resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '..');
-const pages = ['index.html', 'assets/demo-report.html'];
+const pages = [
+  'index.html',
+  'assets/demo-report.html',
+  'lemon-squeezy-migration-inventory-checklist/index.html'
+];
 const failures = [];
 let checked = 0;
 
