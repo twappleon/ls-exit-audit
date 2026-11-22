@@ -6,16 +6,16 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for your interest. This request is public. Do not post credentials, source code, customer data, private keys, seed phrases, or other sensitive information.
+        This request is public. Do not post credentials, source code, customer data, email addresses, private keys, seed phrases, or other sensitive information. Payment is 29 USDT on TRON (TRC20), but do not send until fit and a private delivery route are confirmed.
   - type: dropdown
     id: environment
     attributes:
       label: Primary environment
       options:
-        - macOS
-        - Linux
-        - Windows
-        - Other
+        - macOS with Node.js 20+
+        - Linux with Node.js 20+
+        - Windows with Node.js 20+
+        - Other / not sure
     validations:
       required: true
   - type: dropdown
@@ -32,14 +32,17 @@ body:
     attributes:
       label: Non-sensitive use case
       description: Briefly describe the repository type and migration stage without sharing private details.
+      placeholder: Example — Node.js SaaS, preparing an inventory before replacing checkout and license flows.
     validations:
       required: true
   - type: checkboxes
     id: acknowledgment
     attributes:
-      label: Safety acknowledgment
+      label: Purchase and safety acknowledgment
       options:
         - label: I will only scan repositories and URLs I own or am authorized to inspect.
           required: true
-        - label: I understand payment asset and network must be confirmed before any payment destination is provided.
+        - label: I understand the public price is US$29, paid as 29 USDT on TRON (TRC20), and I will not send before the network, address, and private delivery route are confirmed.
+          required: true
+        - label: I have reviewed the refund and support boundaries on the product page.
           required: true

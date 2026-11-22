@@ -1,0 +1,14 @@
+{
+  "name": "ls-exit-audit-sales-page",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check-links.mjs",
+    "test": "npm run build && npm run check"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
