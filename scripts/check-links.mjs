@@ -55,7 +55,7 @@ for (const required of [
   'US$29',
   '29 USDT',
   'TRON (TRC20)',
-  'TMMJHzDRyBsv6HTmLo9r1QuB7R9Xiu6nu6',
+  'Supplied privately after the buyer confirms USDT + TRON (TRC20)',
   'Refund boundary',
   'Support boundary',
   'assets/demo-report.html'
@@ -63,6 +63,7 @@ for (const required of [
   if (!index.includes(required)) failures.push(`index.html: missing required content: ${required}`);
 }
 if (/ls-exit-audit-0\.3\.0\.zip|products\/ls-exit-audit\/src/i.test(index)) failures.push('index.html exposes a paid archive or source path');
+if (/TMMJHzDRyBsv6HTmLo9r1QuB7R9Xiu6nu6|FQLp4eV3M5jpVmJSyKRQWQyq4AqDZbHC1dTLPYDdmkak/.test(index)) failures.push('index.html exposes a receive address before buyer qualification');
 
 if (failures.length) {
   console.error(failures.join('\n'));

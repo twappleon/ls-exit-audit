@@ -375,7 +375,7 @@ node src/cli.js scan . --fail-on high</div>
         <div class="steps">
           <article class="step"><div><h3>Open a purchase request</h3><p>Use the GitHub form to confirm your operating system and intended scan scope. Do not post credentials, private source, customer data, email addresses, wallet secrets, or seed phrases.</p></div></article>
           <article class="step"><div><h3>Confirm fit and private delivery route</h3><p>The request is checked against the documented Node.js 20+ requirements. A private delivery route is agreed before payment.</p></div></article>
-          <article class="step"><div><h3>Send exactly 29 USDT on TRON (TRC20)</h3><p>Use only the asset, network, and receive address shown below. The buyer covers the network fee. Never send via Ethereum, BNB Smart Chain, Solana, or another network.</p></div></article>
+          <article class="step"><div><h3>Confirm the exact payment route</h3><p>After fit and private delivery are confirmed, the exact receive address is supplied privately for 29 USDT on TRON (TRC20). The buyer covers the network fee. Never substitute Ethereum, BNB Smart Chain, Solana, or another network.</p></div></article>
           <article class="step"><div><h3>Provide the transaction ID</h3><p>Share the public transaction ID in the purchase thread or agreed private route. No seed phrase, private key, wallet login, screenshot of secrets, or additional deposit is ever required.</p></div></article>
           <article class="step"><div><h3>Receive and verify v0.3.0</h3><p>After on-chain settlement is confirmed, the exact v0.3.0 ZIP, SHA-256 checksum, and quick-start instructions are delivered privately. Verify the checksum before opening the archive.</p></div></article>
         </div>
@@ -390,13 +390,9 @@ node src/cli.js scan . --fail-on high</div>
               <dt>Price</dt><dd><strong>29 USDT</strong></dd>
               <dt>Token</dt><dd>USDT</dd>
               <dt>Network</dt><dd>TRON (TRC20) only</dd>
-              <dt>Address</dt>
-              <dd class="address-row">
-                <span class="wallet" id="wallet-address">TMMJHzDRyBsv6HTmLo9r1QuB7R9Xiu6nu6</span>
-                <button class="copy" type="button" data-copy="TMMJHzDRyBsv6HTmLo9r1QuB7R9Xiu6nu6" aria-label="Copy TRON payment address">Copy</button>
-              </dd>
+              <dt>Address</dt><dd>Supplied privately after the buyer confirms USDT + TRON (TRC20) and the delivery route.</dd>
             </dl>
-            <p class="warning"><strong>Network warning:</strong> crypto transfers are irreversible. Confirm “TRON / TRC20” in your sending wallet and compare the complete address before sending. Do not send before your purchase request and private delivery route are confirmed.</p>
+            <p class="warning"><strong>Network warning:</strong> crypto transfers are irreversible. Confirm “USDT” and “TRON / TRC20” in writing, then compare the complete privately supplied address before sending. Do not send before your purchase request and private delivery route are confirmed.</p>
           </div>
         </div>
       </div>
@@ -496,24 +492,5 @@ node src/cli.js scan . --fail-on high</div>
     </div>
   </footer>
 
-  <script>
-    document.querySelectorAll('[data-copy]').forEach((button) => {
-      button.addEventListener('click', async () => {
-        const original = button.textContent;
-        try {
-          await navigator.clipboard.writeText(button.dataset.copy);
-          button.textContent = 'Copied';
-        } catch {
-          const range = document.createRange();
-          range.selectNode(document.getElementById('wallet-address'));
-          const selection = window.getSelection();
-          selection.removeAllRanges();
-          selection.addRange(range);
-          button.textContent = 'Select address';
-        }
-        window.setTimeout(() => { button.textContent = original; }, 1800);
-      });
-    });
-  </script>
 </body>
 </html>
